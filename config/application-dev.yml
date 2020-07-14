@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/employees?characterEncoding=UTF-8
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+logging:
+  config: classpath:logback-dev.xml
+
+#全局格式化时间配置
+platform:
+  date-format: yyyy-MM-dd HH:mm:ss
+  time-zone: GMT+8
+
+jwt:
+  #加密密钥，长度为32个字符
+  secret: "1key_74852_?_1231#12_34!!765A312"
+  #令牌的有效时间，单位：秒
+  expiredTime: 7200

@@ -1,0 +1,55 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!--    context下的标签需要按顺序添加：
+            "(property*,plugin*,commentGenerator?,jdbcConnection,javaTypeResolver?,
+                javaModelGenerator,sqlMapGenerator?,javaClientGenerator?,table+)"
+-->
+    <!-- 相关配置 http://mybatis.org/generator/configreference/xmlconfig.html# -->
+    <context id="simple" targetRuntime="MyBatis3Simple">
+        <!-- 自动识别数据库关键字 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- java类的文件编码-->
+        <property name="javaFileEncoding" value="UTF-8"></property>
+        <!-- 生成的java类的JDK版本 -->
+        <property name="targetJava8" value="true"></property>
+        <!-- 大小写敏感 -->
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <!-- 重写equal、hashCode方法 -->
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <!-- 实现序列化接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 重写toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 继承tk.mybatis的一些类 -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.common.IdsMapper,tk.mybatis.mapper.common.MySqlMapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+            <!-- forceAnnotation 是否强制生成注解，默认 false，如果设置为 true，不管数据库名和字段名是否一致，都会生成注解（包含 @Table 和 @Column）。 -->
+            <property name="forceAnnotation" value="true"/>
+            <!-- beginningDelimiter 和 endingDelimiter 开始和结束分隔符，对于有关键字的情况下适用。-->
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+        </plugin>
+        <commentGenerator>
+            <!-- 去除自带注释 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!-- 配置数据库链接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/employees?characterEncoding=UTF-8"
+                        userId="root"
+                        password="root"/>
+        <!-- 生成的实体类位置 -->
+        <javaModelGenerator targetPackage="com.chlang.entity" targetProject="src/main/java"/>
+        <!-- 生成的mapper XML位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!-- 生成的mapper 接口位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.chlang.mapper" targetProject="src/main/java"/>
+        <!-- 需要操作的数据库表 -->
+        <table tableName="employees"/>
+    </context>
+</generatorConfiguration>
