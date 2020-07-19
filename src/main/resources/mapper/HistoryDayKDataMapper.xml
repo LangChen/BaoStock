@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chlang.mapper.HistoryDayKDataMapper">
+  <resultMap id="BaseResultMap" type="com.chlang.entity.HistoryDayKData">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="open" jdbcType="DECIMAL" property="open" />
+    <result column="high" jdbcType="DECIMAL" property="high" />
+    <result column="low" jdbcType="DECIMAL" property="low" />
+    <result column="close" jdbcType="DECIMAL" property="close" />
+    <result column="preclose" jdbcType="DECIMAL" property="preclose" />
+    <result column="volume" jdbcType="BIGINT" property="volume" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="adjustflag" jdbcType="TINYINT" property="adjustflag" />
+    <result column="turn" jdbcType="DECIMAL" property="turn" />
+    <result column="tradestatus" jdbcType="TINYINT" property="tradestatus" />
+    <result column="pctChg" jdbcType="DECIMAL" property="pctchg" />
+    <result column="peTTM" jdbcType="DECIMAL" property="pettm" />
+    <result column="psTTM" jdbcType="DECIMAL" property="psttm" />
+    <result column="pcfNcfTTM" jdbcType="DECIMAL" property="pcfncfttm" />
+    <result column="pbMRQ" jdbcType="DECIMAL" property="pbmrq" />
+    <result column="isST" jdbcType="TINYINT" property="isst" />
+    <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
+  </resultMap>
+</mapper>

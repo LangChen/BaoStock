@@ -5,6 +5,7 @@ import com.chlang.common.helper.JwtHelper;
 import com.chlang.common.resp.common.ErrorCode;
 import com.chlang.common.resp.common.PlatformHttpResult;
 import com.chlang.service.AuthService;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +39,12 @@ public class AuthController {
         if (!loginInfo.containsKey("userAccount") || !loginInfo.containsKey("password")){
             return PlatformHttpResult.errorWithMsg(ErrorCode.UN_KNOW_ERROR,"参数出错");
         }
+
         String userAccount = loginInfo.get("userAccount").toString();
         String password = loginInfo.get("password").toString();
+        if(Strings.isBlank(userAccount) || Strings.isBlank(password)){
+            return PlatformHttpResult.errorWithMsg(ErrorCode.UN_KNOW_ERROR,"参数出错");
+        }
 
         return authService.commonUserLogin(userAccount,password);
     }

@@ -13,10 +13,13 @@ public class ErrorCode {
      * 无效令牌
      */
     public final static Integer TOKEN_FAILED_ERROR = 500001;
-
     /**
      * 登录超时
      */
     public final static Integer TOKEN_EXPIRED_ERROR = 500002;
+    /**
+     * 登录认证失败
+     */
+    public final static Integer AUTH_ERROR = 500003;
 
 }
