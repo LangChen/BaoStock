@@ -63,7 +63,7 @@ public class WebConfig implements WebMvcConfigurer {
         //添加拦截路径
         registry.addInterceptor(new PlatformInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/auth/login");
+                .excludePathPatterns("/api/v1/auth/login");
     }
 
     @Override

@@ -22,7 +22,7 @@ import java.util.Map;
  * @date 2020/5/29 5:43 下午
  **/
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     @Autowired

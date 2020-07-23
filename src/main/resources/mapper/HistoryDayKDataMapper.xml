@@ -26,4 +26,69 @@
     <result column="isST" jdbcType="TINYINT" property="isst" />
     <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
   </resultMap>
+  <select id="getKDataByCode" resultType="com.chlang.common.resp.bean.KData">
+    select
+      k.id as id,
+      k.date as date,
+      k.code as code,
+      k.open as open,
+      k.high as high,
+      k.low as low,
+      k.close as close,
+      k.preclose as preclose,
+      k.volume as volume,
+      k.amount as amount,
+      k.adjustflag as adjustflag,
+      k.turn as turn,
+      k.tradestatus as tradestatus,
+      k.pctChg as pctChg,
+      k.peTTM as peTTM,
+      k.psTTM as psTTM,
+      k.pcfNcfTTM as pcfNcfTTM,
+      k.pbMRQ as pbMRQ,
+      k.isST as isST,
+      s.code_name as codeName
+    from history_day_k_data k
+      left join stock s on s.code = k.code
+    where
+      k.code = #{code}
+    order by k.date desc
+  </select>
+  <select id="getKData" resultType="com.chlang.common.resp.bean.KData">
+    select
+      k.id as id,
+      k.date as date,
+      k.code as code,
+      k.open as open,
+      k.high as high,
+      k.low as low,
+      k.close as close,
+      k.preclose as preclose,
+      k.volume as volume,
+      k.amount as amount,
+      k.adjustflag as adjustflag,
+      k.turn as turn,
+      k.tradestatus as tradestatus,
+      k.pctChg as pctChg,
+      k.peTTM as peTTM,
+      k.psTTM as psTTM,
+      k.pcfNcfTTM as pcfNcfTTM,
+      k.pbMRQ as pbMRQ,
+      k.isST as isST,
+      s.code_name as codeName
+    from history_day_k_data k
+      left join stock s on s.code = k.code
+    <where>
+      <if test="code != null and code != ''">
+        k.code = #{code}
+      </if>
+      and k.date = #{date}
+    </where>
+    order by k.id asc
+  </select>
+  <select id="getLastDay" resultType="java.lang.String">
+    select k.date from history_day_k_data k order by k.date desc limit 1
+  </select>
+
+
 </mapper>

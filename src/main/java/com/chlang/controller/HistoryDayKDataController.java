@@ -4,7 +4,6 @@ import com.chlang.common.annotation.ControllerWebLog;
 import com.chlang.common.resp.common.PlatformHttpResult;
 import com.chlang.service.HistoryDayKDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,13 +28,23 @@ public class HistoryDayKDataController {
      */
     @ControllerWebLog(apiName = "/historyDayKData")
     @GetMapping("")
-    public PlatformHttpResult getHistoryDatKData(@RequestParam(value = "code",required = false)String code,
-                                                 @RequestParam(value = "startTime",required = false)String startTime,
-                                                 @RequestParam(value = "endTime",required = false)String endTime,
+    public PlatformHttpResult getHistoryDayKData(@RequestParam(value = "code",required = false)String code,
                                                  @RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum,
                                                  @RequestParam(value = "pageSize",defaultValue = "10")Integer pageSize){
 
-        return null;
+        return historyDayKDataService.getHistoryDayKData(code,pageNum,pageSize);
     }
 
+    /**
+     * 获取最新的k线数据
+     * @return
+     */
+    @ControllerWebLog(apiName = "/historyDayKData")
+    @GetMapping("/last")
+    public PlatformHttpResult getLastHistoryDayKData(@RequestParam(value = "code",required = false)String code,
+                                                 @RequestParam(value = "pageNum",defaultValue = "1")Integer pageNum,
+                                                 @RequestParam(value = "pageSize",defaultValue = "10")Integer pageSize){
+
+        return historyDayKDataService.getLastHistoryDayKData(code,pageNum,pageSize);
+    }
 }

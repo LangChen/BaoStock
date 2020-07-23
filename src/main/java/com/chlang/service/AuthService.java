@@ -38,11 +38,11 @@ public class AuthService {
         if(userAuth == null){
             throw new PlatfromException(ErrorCode.AUTH_ERROR,"用户不存在");
         }
-        if(userAuth.getUserStatus() == UserStatus.NORMAL.getStatus()){
+        if(userAuth.getUserStatus() != UserStatus.NORMAL.getStatus()){
             throw new PlatfromException(ErrorCode.AUTH_ERROR,"账号状态不正常");
         }
 
-        if(userAuth.getPassword().equals(password)){
+        if(!userAuth.getPassword().equals(password)){
             throw new PlatfromException(ErrorCode.AUTH_ERROR,"密码不正确");
         }
 
