@@ -25,6 +25,19 @@ public interface HistoryDayKDataMapper extends Mapper<HistoryDayKData>, IdsMappe
      */
     List<KData> getKData(@Param("code")String code,@Param("date")String date);
 
+    /**
+     * 获取最新的交易时间
+     * @return
+     */
     String getLastDay();
+
+    /**
+     * 获取最新的n个交易时间
+     * @param date
+     * @param count
+     * @return
+     */
+    List<String> getLastDayByCount(@Param("date")String date,
+                                   @Param("count")Integer count);
 
 }

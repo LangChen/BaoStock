@@ -89,6 +89,12 @@
   <select id="getLastDay" resultType="java.lang.String">
     select k.date from history_day_k_data k order by k.date desc limit 1
   </select>
-
+  <select id="getLastDayByCount" resultType="java.lang.String">
+    select k.date from history_day_k_data k
+    <where>
+      k.date &lt;= #{date}
+    </where>
+    GROUP BY k.date order by k.date desc limit #{count}
+  </select>
 
 </mapper>

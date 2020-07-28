@@ -33,3 +33,5 @@ build/
 /src/main/java/com/chlang/entity/Employees.java
 /src/main/java/com/chlang/controller/TestController.java
 /src/main/resources/mapper/EmployeesMapper.xml
+
+/config/application-prod1.yml

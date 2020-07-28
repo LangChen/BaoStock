@@ -6,8 +6,7 @@ import com.chlang.common.helper.JwtHelper;
 import com.chlang.common.resp.common.ErrorCode;
 import com.chlang.common.resp.common.PlatformHttpResult;
 import com.chlang.entity.UserAuth;
-import com.chlang.mapper.UserAuthMapper;
-import com.chlang.reposity.UserAuthRepository;
+import com.chlang.repository.UserAuthRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

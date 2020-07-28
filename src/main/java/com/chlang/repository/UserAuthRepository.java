@@ -1,4 +1,4 @@
-package com.chlang.reposity;
+package com.chlang.repository;
 
 import com.chlang.entity.UserAuth;
 import com.chlang.mapper.UserAuthMapper;

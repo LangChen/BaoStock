@@ -11,4 +11,10 @@
     <result column="tradeStatus" jdbcType="TINYINT" property="tradestatus" />
     <result column="createDate" jdbcType="TIMESTAMP" property="createdate" />
   </resultMap>
+    <select id="getStock" resultMap="BaseResultMap">
+      select s.* from stock s
+        inner join history_day_k_data k on k.code = s.code
+      where
+        k.peTTM != 0 GROUP BY s.id
+    </select>
 </mapper>
