@@ -46,7 +46,7 @@ public class AuthService {
         }
 
         Map<String,Object> result = new HashMap<>();
-        String token = jwtHelper.createToken(userAccount);
+        String token = jwtHelper.createToken(userAuth.getId(),userAccount);
         result.put("token",token);
 
         return PlatformHttpResult.successWithObj(result);

@@ -1,5 +1,6 @@
 package com.chlang.common.helper;
 
+import com.chlang.common.constant.CommonConstants;
 import com.chlang.common.exception.PlatfromException;
 import com.chlang.common.resp.common.ErrorCode;
 import io.jsonwebtoken.Claims;
@@ -37,10 +38,11 @@ public class JwtHelper {
      * @param userAccount
      * @return
      */
-    public String createToken(String userAccount){
+    public String createToken(Integer userId,String userAccount){
         //设置过期时间，如果使用redis，可以去掉，
         Map<String,Object> claims = new HashMap<>();
-        claims.put("userAccount",userAccount);
+        claims.put(CommonConstants.CURRENT_USER_ACCOUNT,userAccount);
+        claims.put(CommonConstants.CURRENT_USER_ID,userId);
         Date now = new Date();
         //设置超时时间
         Date exp = new Date(now.getTime()+expiredTime*1000);

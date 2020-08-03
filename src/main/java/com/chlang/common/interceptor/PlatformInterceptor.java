@@ -1,5 +1,6 @@
 package com.chlang.common.interceptor;
 
+import com.chlang.common.constant.CommonConstants;
 import com.chlang.common.exception.PlatfromException;
 import com.chlang.common.helper.JwtHelper;
 import com.chlang.common.resp.common.ErrorCode;
@@ -27,10 +28,10 @@ public class PlatformInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         logger.info("--------进入拦截器--------");
         Enumeration<String> headerNames = request.getHeaderNames();
-//        while(headerNames.hasMoreElements()){
-//            String headName = headerNames.nextElement();
-//            logger.info(headName + ":" + request.getHeader(headName));
-//        }
+        while(headerNames.hasMoreElements()){
+            String headName = headerNames.nextElement();
+            logger.info(headName + ":" + request.getHeader(headName));
+        }
 
         String authHeader = request.getHeader("Authorization");
         //判断是否传入令牌
@@ -46,6 +47,8 @@ public class PlatformInterceptor implements HandlerInterceptor {
         //从redis中获取用户信息
 
         //将用户信息存储到request的attr中
+        request.setAttribute(CommonConstants.CURRENT_USER_ID,claims.get(CommonConstants.CURRENT_USER_ID).toString());
+        request.setAttribute(CommonConstants.CURRENT_USER_ACCOUNT,claims.get(CommonConstants.CURRENT_USER_ACCOUNT).toString());
 
         return true;
     }

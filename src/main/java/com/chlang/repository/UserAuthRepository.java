@@ -28,4 +28,15 @@ public class UserAuthRepository{
         example.createCriteria().andEqualTo("userAccount",userAccount);
         return userAuthMapper.selectOneByExample(example);
     }
+
+    /**
+     * 根据用户账号获取用户认证信息
+     * @param userId
+     * @return
+     */
+    public UserAuth getByUserId(Integer userId){
+        Example example = new Example(UserAuth.class);
+        example.createCriteria().andEqualTo("id",userId);
+        return userAuthMapper.selectOneByExample(example);
+    }
 }
